@@ -97,6 +97,8 @@ class program {
                         state= gameState.City;
                     }
                 }
+                    index = random.Next(enemy.attacksType.Count);
+                    String attackType = enemy.attacksType[index]; 
                 break;
             }
          }
