@@ -1,0 +1,15 @@
+C:\Users\Admin\turnbased\bin\Debug\net6.0\turnbased.exe
+C:\Users\Admin\turnbased\bin\Debug\net6.0\turnbased.deps.json
+C:\Users\Admin\turnbased\bin\Debug\net6.0\turnbased.runtimeconfig.json
+C:\Users\Admin\turnbased\bin\Debug\net6.0\turnbased.dll
+C:\Users\Admin\turnbased\bin\Debug\net6.0\turnbased.pdb
+C:\Users\Admin\turnbased\obj\Debug\net6.0\turnbased.csproj.AssemblyReference.cache
+C:\Users\Admin\turnbased\obj\Debug\net6.0\turnbased.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\turnbased\obj\Debug\net6.0\turnbased.AssemblyInfoInputs.cache
+C:\Users\Admin\turnbased\obj\Debug\net6.0\turnbased.AssemblyInfo.cs
+C:\Users\Admin\turnbased\obj\Debug\net6.0\turnbased.csproj.CoreCompileInputs.cache
+C:\Users\Admin\turnbased\obj\Debug\net6.0\turnbased.dll
+C:\Users\Admin\turnbased\obj\Debug\net6.0\refint\turnbased.dll
+C:\Users\Admin\turnbased\obj\Debug\net6.0\turnbased.pdb
+C:\Users\Admin\turnbased\obj\Debug\net6.0\turnbased.genruntimeconfig.cache
+C:\Users\Admin\turnbased\obj\Debug\net6.0\ref\turnbased.dll

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 public enum gameState 
 {
     Battle,
@@ -13,6 +14,14 @@ public class Enemy
    public int attack;
    public int defense;
    public List<string> attacksType;
+   public Enemy(string name, int health,int attack,int defense, List<string> attackstype)
+   {
+    this.name = name;
+    this.health = health;
+    this.attack = attack;
+    this.defense = defense;
+    this.attacksType = attacksType;
+   }
 }
 public class player
 {
@@ -70,8 +79,8 @@ class program {
                 break; 
                 case gameState.Battle:
                 List<Enemy> enemies = new List<Enemy>();
-                enemies.Add( new Enemy {name = "wizard", health= 30, attack = 10, defense= 3, attacksType= new List<string>{"Ranged"}});
-                enemies.Add( new Enemy {name = "goblin", health= 50, attack = 7, defense= 5, attacksType= new List<string>{"Ranged","Melee"}});
+                enemies.Add( new Enemy ( "wizard", 30,   10,  3, new List<string>{"Ranged"}));
+                enemies.Add( new Enemy ( "goblin", 50, 7, 5, new List<string>{"Ranged","Melee"}));
                 Random random = new Random();
                 int index = random.Next(enemies.Count);
                 Enemy enemy = enemies[index];
@@ -90,15 +99,32 @@ class program {
                         {
                         Console.WriteLine("You killed "+ enemy.name);
                         Player.score += 100;
+                        break;
                         }
+                    index = random.Next(enemy.attacksType.Count);
+                    String attackType = enemy.attacksType[index]; 
+                    int enemyDamage = enemy.attack - Player.defense;
+                    Player.health -= enemyDamage;
+                    Console.WriteLine(enemy.name + "attacked you, you have "+ Player.health + "HP left.");
+                    if (Player.health <= 0)
+                    {
+                        Console.WriteLine("you died");
+                        state = gameState.Dead;
+                        break;
                     }
+                    }
+
                     else if (action == "2")
                     {
                         state= gameState.City;
                     }
                 }
-                    index = random.Next(enemy.attacksType.Count);
-                    String attackType = enemy.attacksType[index]; 
+                    
+                break;
+                case gameState.Dead:
+                string fileName = "highscores.txt";
+                StreamWriter sw = new StreamWriter(fileName, true);
+                sw.WriteLine(Player.score.ToString());
                 break;
             }
          }
