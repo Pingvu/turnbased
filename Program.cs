@@ -14,7 +14,7 @@ public class Enemy
    public int attack;
    public int defense;
    public List<string> attacksType;
-   public Enemy(string name, int health,int attack,int defense, List<string> attackstype)
+   public Enemy(string name, int health,int attack,int defense, List<string> attacksType)
    {
     this.name = name;
     this.health = health;
@@ -30,11 +30,7 @@ public class player
     public int defense;
     public int score;
 }
-public class obstacle{
-    public string name;
-    public bool canPassThrough;
-    public List<string> interactAction;
-}
+
 
 class program {
 
@@ -42,7 +38,7 @@ class program {
     {
          gameState state = gameState.MainMenu;
          player Player = new player();
-         Player.health = 100;
+         Player.health = 50;
          Player.attack = 10;
          Player.defense = 5;
          while (state != gameState.Dead)
@@ -62,11 +58,13 @@ class program {
                 else if (input == "2")
                 {
                     Console.WriteLine("Goodbye!");
+                    Environment.Exit(0);
                 }
                 break;
                 case gameState.City:
                 Console.WriteLine("1. Fight an enemy");
-                Console.WriteLine("2. Return to main menu");
+                Console.WriteLine("2. Remaining HP");
+                Console.WriteLine("3. Quit game");
                 string input2 = Console.ReadLine();
                 if (input2 == "1")
                 {
@@ -74,7 +72,11 @@ class program {
                 }
                 if (input2 == "2")
                 {
-                    state = gameState.MainMenu;
+                    Console.WriteLine(Player.health);
+                }
+                if (input2=="3")
+                {
+                    Environment.Exit(0);
                 }
                 break; 
                 case gameState.Battle:
@@ -94,11 +96,12 @@ class program {
                     {
                         int damage = Player.attack - enemy.defense;
                         enemy.health -= damage;
-                        Console.WriteLine("You attack " + enemy.name + ", they have " + enemy.health + "HP left.");
+                        Console.WriteLine("You attack " + enemy.name + ", it has " + enemy.health + "HP left.");
                         if (enemy.health <= 0)
                         {
                         Console.WriteLine("You killed "+ enemy.name);
                         Player.score += 100;
+                        state = gameState.City;
                         break;
                         }
                     index = random.Next(enemy.attacksType.Count);
@@ -117,16 +120,20 @@ class program {
                     else if (action == "2")
                     {
                         state= gameState.City;
+                        break;
                     }
                 }
                     
                 break;
-                case gameState.Dead:
+            }
+        if (state == gameState.Dead)
+        {
                 string fileName = "highscores.txt";
                 StreamWriter sw = new StreamWriter(fileName, true);
                 sw.WriteLine(Player.score.ToString());
+                sw.Close();
                 break;
-            }
+        }
          }
     }
 }
