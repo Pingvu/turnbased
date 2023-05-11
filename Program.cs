@@ -61,6 +61,10 @@ class program {
                     Console.WriteLine("Goodbye!");
                     Environment.Exit(0);
                 }
+                else 
+                {
+                    Console.WriteLine("Invalid input");
+                }
                 break;
                 case gameState.City:
                 Console.WriteLine("1. Fight an enemy");
@@ -83,6 +87,10 @@ class program {
                 if (input2=="4")
                 {
                     Environment.Exit(0);
+                }
+                else 
+                {
+                    Console.WriteLine("Invalid input");
                 }
                 break; 
                 case gameState.Battle:
@@ -128,19 +136,23 @@ class program {
                         state= gameState.City;
                         break;
                     }
+                    else 
+                {
+                    Console.WriteLine("Invalid input");
+                }
                 }
                     
                 break;
                 case gameState.Obstacle:
-    Console.WriteLine("You have encountered an obstacle!");
-    Console.WriteLine("1. Try to open the door");
-    Console.WriteLine("2. Look for another way around");
-    Console.WriteLine("3. Ignore it");
-    string input3 = Console.ReadLine();
-    if (input3 == "1")
-    {
-        Console.WriteLine("You try to open the door...");
-        bool doorOpen = false;
+                Console.WriteLine("You have encountered an obstacle!");
+                Console.WriteLine("1. Try to open the door");
+                Console.WriteLine("2. Look for another way around");
+                Console.WriteLine("3. Ignore it");
+                string input3 = Console.ReadLine();
+                if (input3 == "1")
+                {
+                Console.WriteLine("You try to open the door...");
+                bool doorOpen = false;
         if (doorOpen)
         {
             Console.WriteLine("You successfully opened the door!");
@@ -154,7 +166,8 @@ class program {
     else if (input3 == "2")
     {
         Console.WriteLine("You look for another way around...");
-        bool foundPath = false;
+        Random random2 = new Random();
+        bool foundPath = (random2.Next(2) == 0);
         if (foundPath)
         {
             Console.WriteLine("You found another path and continue on your journey.");
@@ -170,6 +183,10 @@ class program {
         Console.WriteLine("You ignore the obstacle for now...");
         state = gameState.City;
     }
+    else 
+                {
+                    Console.WriteLine("Invalid input");
+                }
     break;
             }
         if (state == gameState.Dead)
