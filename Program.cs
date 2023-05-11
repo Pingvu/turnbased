@@ -122,7 +122,7 @@ class program {
                     String attackType = enemy.attacksType[index]; 
                     int enemyDamage = enemy.attack - Player.defense;
                     Player.health -= enemyDamage;
-                    Console.WriteLine(enemy.name + "attacked you, you have "+ Player.health + "HP left.");
+                    Console.WriteLine(enemy.name + "attacked you with" + attackType + ", you have "+ Player.health + "HP left.");
                     if (Player.health <= 0)
                     {
                         Console.WriteLine("you died");
