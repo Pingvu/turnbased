@@ -7,6 +7,7 @@ public enum gameState
     City,
     Dead,
     MainMenu,
+    Obstacle,
 }
 public class Enemy
 {  public string name;
@@ -63,8 +64,9 @@ class program {
                 break;
                 case gameState.City:
                 Console.WriteLine("1. Fight an enemy");
-                Console.WriteLine("2. Remaining HP");
-                Console.WriteLine("3. Quit game");
+                Console.WriteLine("2. Encounter an obstacle");
+                Console.WriteLine("3. Remaining HP");
+                Console.WriteLine("4. Quit game");
                 string input2 = Console.ReadLine();
                 if (input2 == "1")
                 {
@@ -72,9 +74,13 @@ class program {
                 }
                 if (input2 == "2")
                 {
+                    state = gameState.Obstacle;
+                }
+                if (input2 == "3")
+                {
                     Console.WriteLine(Player.health);
                 }
-                if (input2=="3")
+                if (input2=="4")
                 {
                     Environment.Exit(0);
                 }
@@ -125,6 +131,46 @@ class program {
                 }
                     
                 break;
+                case gameState.Obstacle:
+    Console.WriteLine("You have encountered an obstacle!");
+    Console.WriteLine("1. Try to open the door");
+    Console.WriteLine("2. Look for another way around");
+    Console.WriteLine("3. Ignore it");
+    string input3 = Console.ReadLine();
+    if (input3 == "1")
+    {
+        Console.WriteLine("You try to open the door...");
+        bool doorOpen = false;
+        if (doorOpen)
+        {
+            Console.WriteLine("You successfully opened the door!");
+            state = gameState.City;
+        }
+        else
+        {
+            Console.WriteLine("The door is locked. You need a key to open it.");
+        }
+    }
+    else if (input3 == "2")
+    {
+        Console.WriteLine("You look for another way around...");
+        bool foundPath = false;
+        if (foundPath)
+        {
+            Console.WriteLine("You found another path and continue on your journey.");
+            state = gameState.City;
+        }
+        else
+        {
+            Console.WriteLine("You couldn't find another way around. You are stuck here for now.");
+        }
+    }
+    else if (input3 == "3")
+    {
+        Console.WriteLine("You ignore the obstacle for now...");
+        state = gameState.City;
+    }
+    break;
             }
         if (state == gameState.Dead)
         {
